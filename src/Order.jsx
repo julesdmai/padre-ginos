@@ -21,8 +21,6 @@ export default function Order() {
     const pizzaRes = await fetch("/api/pizzas");
     const pizzaJson = await pizzaRes.json();
     setPizzaTypes(pizzaJson);
-    };
-
     setLoading(false);
   }
 
@@ -52,9 +50,9 @@ export default function Order() {
               value={pizzaType}
             >
               {pizzaTypes.map((pizza) => (
-                  <option key={pizza.id} value={pizza.id}>
-                    {pizza.name}
-                  </option>
+                <option key={pizza.id} value={pizza.id}>
+                  {pizza.name}
+                </option>
               ))}
             </select>
           </div>
