@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "@tanstack/react-router";
 
 class ErrorBoundary extends Component {
   state = { hasError: false };
@@ -15,7 +16,7 @@ class ErrorBoundary extends Component {
         <div className="error-boundary">
           <h2>Uh Oh!</h2>
           <p>
-            There was an error with this page. 
+            There was an error with this page.
             <Link to="/">Click here</Link> to go back to the home page.
           </p>
         </div>
