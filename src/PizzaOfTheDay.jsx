@@ -20,7 +20,7 @@ const PizzaOfTheDay = () => {
           <h3>{pizzaOfTheDay.name}</h3>
           <p>{pizzaOfTheDay.description}</p>
           <p className="pizza-of-the-day-price">
-            From: {Intl.ListFormat(pizzaOfTheDay.sizes.S)}
+            From: {intl.ListFormat(pizzaOfTheDay.sizes.S)}
           </p>
         </div>
         <img
