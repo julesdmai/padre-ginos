@@ -7,6 +7,7 @@ const intl = new Intl.NumberFormat("en-US", {
 });
 
 export default function Order() {
+  console.log("Order rending");
   const [pizzaTypes, setPizzaTypes] = useState([]);
   const [pizzaType, setPizzaType] = useState("pepperoni");
   const [pizzaSize, setPizzaSize] = useState("M");
