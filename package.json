@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx,css}\"",
     "lint": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
+  "type": "module",
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -21,6 +25,7 @@
     "vite": "^5.4.2"
   },
   "dependencies": {
-    "react": "^19.0.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   }
 }
