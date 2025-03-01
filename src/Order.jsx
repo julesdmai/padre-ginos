@@ -13,8 +13,10 @@ export default function Order() {
   const [loading, setLoading] = useState(true);
 
   let price, selectedPizza;
+
   if (!loading) {
     selectedPizza = pizzaTypes.find((pizza) => pizzaType === pizza.id);
+    price = intl.format(selectedPizza.sizes[pizzaSize]);
   }
 
   async function fetchPizzaTypes() {
@@ -27,15 +29,6 @@ export default function Order() {
   useEffect(() => {
     fetchPizzaTypes();
   }, []);
-
-  //   Debugging
-  useEffect(() => {
-    console.log("Updated pizzaTypes: ", pizzaTypes);
-    console.log(
-      "Mapped pizzaTypes: ",
-      pizzaTypes.map((p) => ({ id: p.id, name: p.name }))
-    );
-  }, [pizzaTypes]);
 
   return (
     <div className="order">
@@ -96,12 +89,16 @@ export default function Order() {
           </div>
           <button type="submit">Add to Cart</button>
           <div className="order-pizza">
-            <Pizza
-              name="Pepperoni"
-              description="another pep pizza"
-              image="/public/pizzas/pepperoni.webp"
-            />
-            <p>Price: $13.37</p>
+            {loading ? (
+              <h1>loading pizza lol</h1>
+            ) : (
+              <Pizza
+                name={selectedPizza.name}
+                description={selectedPizza.description}
+                image={selectedPizza.image}
+              />
+            )}
+            <p>{price}</p>
           </div>
         </div>
       </form>
