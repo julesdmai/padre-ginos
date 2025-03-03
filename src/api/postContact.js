@@ -6,10 +6,11 @@ export default async function postContact(name, email, message) {
     },
     body: JSON.stringify({ name, email, message }),
   });
+  const data = await  response.json();
 
   if (!response.ok) {
     throw new Error("Netywork response was not ok. Send help.");
   }
 
-  return response.json();
+  return data;
 }
