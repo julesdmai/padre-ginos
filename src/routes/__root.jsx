@@ -18,6 +18,8 @@ export const Route = createRootRoute({
             <PizzaOfTheDay />
           </div>
         </CartContext>
+        
+        {/* DEV TOOLS */}
         <TanStackRouterDevtools />
         <ReactQueryDevtools />
       </>
