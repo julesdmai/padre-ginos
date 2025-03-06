@@ -7,6 +7,7 @@ export const Route = createLazyFileRoute("/contact")({
 });
 
 function ContactRoute() {
+  // mutation is any POST/UPDATE/PATCH
   const mutation = useMutation({
     mutationFn: function (e) {
       e.preventDefault();
@@ -14,7 +15,7 @@ function ContactRoute() {
       return postContact(
         formData.get("name"),
         formData.get("email"),
-        formData.get("message")
+        formData.get("message"),
       );
     },
   });

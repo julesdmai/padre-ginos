@@ -14,7 +14,7 @@ const intl = new Intl.NumberFormat("en-US", {
 });
 
 function Order() {
-  console.log("Order rending");
+  console.log("Order rendering");
   const [pizzaTypes, setPizzaTypes] = useState([]);
   const [pizzaType, setPizzaType] = useState("pepperoni");
   const [pizzaSize, setPizzaSize] = useState("M");
