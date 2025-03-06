@@ -13,11 +13,7 @@ export const Route = createLazyFileRoute("/past")({
 
 function ErrorBoundaryWrappedPastOrderRoutes(props) {
   const [page, setPage] = useState(1);
-  const loadedPromise = useQuery({
-    queryKey: ["past-orders", page],
-    queryFn: () => getPastOrders(page),
-    staleTime: 30000,
-  }).promise;
+  
   return (
     <ErrorBoundary>
       <Suspense
@@ -28,7 +24,6 @@ function ErrorBoundaryWrappedPastOrderRoutes(props) {
         }
       >
         <PastOrdersRoute
-          loadedPromise={loadedPromise}
           page={page}
           setPage={setPage}
           {...props}
@@ -39,22 +34,20 @@ function ErrorBoundaryWrappedPastOrderRoutes(props) {
 }
 
 function PastOrdersRoute({ page, setPage, loadedPromise }) {
+  const { data } = useQuery({
+    queryKey: ["past-orders", page],
+    queryFn: () => getPastOrders(page),
+    staleTime: 30000,
+    suspense: true
+  });
+  
   const [focusedOrder, setFocusedOrder] = useState();
-  const data = use(loadedPromise);
   const { isLoading: isLoadingPastOrder, data: pastOrdersData } = useQuery({
     queryKey: ["past-order", focusedOrder],
     queryFn: () => getPastOrder(focusedOrder),
     staleTime: 24 * 60 * 60 * 1000,
     enabled: !!focusedOrder,
   });
-
-  if (isLoading) {
-    return (
-      <div className="past-orders">
-        <h2>LOADING ...</h2>
-      </div>
-    );
-  }
 
   return (
     <div className="past-orders">
